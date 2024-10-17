@@ -6,8 +6,7 @@ Quickly move to section you are interested in by clicking on appropriate link:
 - [Project Architecture](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#project-architecture)
 - [Dataset](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#dataset)
 - [Technologies](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#technologies)
-- [Reproducing Project](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#reproducing-project) (long section)
-- [Dashboard](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#dashboard)
+- [Project Overview](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#project-overview)
 
 ---
 ## Overview
