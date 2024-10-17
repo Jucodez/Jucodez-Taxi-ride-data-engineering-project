@@ -2,70 +2,106 @@
 ## Navigation / Quick Access
 Quickly move to section you are interested in by clicking on appropriate link:
 - [Overview](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#overview)
-- [Project Objective](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#project-objective)
-- [Project Architecture](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#project-architecture)
-- [Dataset](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#dataset)
-- [Technologies](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#technologies)
-- [Reproducing Project](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#reproducing-project) (long section)
-- [Dashboard](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#dashboard)
+- [Project Objective](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#project-objective)
+- [Project Architecture](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#project-architecture)
+- [Dataset](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#dataset)
+- [Technologies](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#technologies)
+- [Reproducing Project](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#reproducing-project) (long section)
+- [Dashboard](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#dashboard)
 
 ---
 ## Overview
-This project extracts, moves and analyzes DC's [Capital Bikeshare](https://ride.capitalbikeshare.com) data.
+This project extracts, transforms, loads and analyzes data from the [NYC Taxi and Limousine Commission](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
 
-Where do Capital Bikeshare riders go? When do they ride? How far do they go? Which stations are most popular? What days of the week are most rides taken on? 
-This project successfully attempts to extract the data, move, store and analyze the insights to answer some key questions about Washighton DC's Capital BikeShare.
-
-This project was created as part of the requirement needed for [DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main) certification.
+Relevant data is collected, and transformations are carried out to support the analysis of revenue generation by the commission through taxi rides.
 
 ---
 ## Project Objective
-Succesfully move data from Source, transform and Visualize in a dashboard.
+Successfully move data from Source, transform, and Visualize in a dashboard.
 Key Deliverables:
-- Create end to end pipeline to move data by batching to analytical warehouse
-- Design and build analytical dashboard to showcase insights
+- Create a data pipeline to process data in batches from the [NYC Taxi and Limousine Commission](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) data records to a data warehouse.
+- Create an analytical engineering model to transform the data for analysis.
+- Create a dashboard to present key revenue insights to stakeholders.
 
 ---
 ## Project Architecture
-![Alt text](https://github.com/EdidiongEsu/capital_bikeshare/blob/main/img/Bike%20architecture.gif)
+![DAG](https://github.com/user-attachments/assets/33af18d8-a345-4d99-829e-09a5263986cf)
 
-The data architecture is an overview of the end-to-end pipeline which include:
-- Ingesting of source dataset to google cloud storage
-- Moving data and staging in a dataware house which is big query
-- transforming the data using dbt via dbt cloud
-- Creation of dashboard with Looker studio
 
+The data architecture is an overview of the data pipeline. Key points are:
+- A mage ETL pipeline from the [NYC Taxi and Limousine Commission](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) data records to a GCS bucket
+- A mage ETL pipeline from the GCS bucket to the Big Query data warehouse.
+- An analytical engineering model built on top of the Big Query data warehouse using DBT to further transform the data
+- A dashboard built with Power BI for Analysis
 ---
 ## Dataset
-The project's data source can be accessed [here](https://ride.capitalbikeshare.com/system-data)
+The project's data source can be accessed [here](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
-Dataset columns from source:
-- ride_id - Unique key for each ride
-- rideable_type - Bike type used
-- started_at – Includes start date and time
-- ended_at – Includes end date and time
-- start_station_name – Includes starting station name
-- start_station_id - Unique id of start station
-- end_station_name – Includes ending station name
-- end_station_id - Unique id of ending station
-- start_lat - Start Latitude of bike trip
-- start_lng - Start Longitude of bike trip
-- end_lat - Latitude the bike trips end
-- end_lng - Longitude the bike trips end
-- member_casual- Indicates whether user was a "registered" member (Annual Member, 30-Day Member or Day Key Member) or a "casual" rider (Single Trip, 24-Hour Pass, 3-Day Pass or 5-Day Pass)
+Two months of data, June and July 2024, were collected from the [NYC Taxi and Limousine Commission](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) data records for green and yellow service taxis.
+
+This data was then analyzed to present insights into the revenue of the commission for these two months
+
+
+Yellow Taxi Dataset:
+
+Field name description
+- VendorID - A code indicating the TPEP provider that provided the record
+- tpep_pickup_datetime - The date and time when the meter was engaged.
+- tpep_dropoff_datetime - The date and time when the meter was disengaged.
+- Passenger_count - The number of passengers in the vehicle (this is a driver-entered value).
+- Trip_distance - The elapsed trip distance in miles reported by the taximeter.
+- PULocationID - TLC Taxi Zone in which the taximeter was engaged.
+- DOLocationID - TLC Taxi Zone in which the taximeter was disengaged.
+- RateCodeID - The final rate code in effect at the end of the trip.
+- Store_and_fwd_flag - Indicates whether the trip record was held in vehicle memory before sending to the vendor (“store and forward”) due to no connection to the server.
+- Payment_type - A numeric code signifying how the passenger paid for the trip.
+- Fare_amount - The time-and-distance fare calculated by the meter.
+- Extra - Miscellaneous extras and surcharges, including the $0.50 and $1 rush hour and overnight charges.
+- MTA_tax - $0.50 MTA tax automatically triggered based on the metered rate in use.
+- Improvement_surcharge - $0.30 improvement surcharge assessed for trips at the flag drop. The surcharge began being levied in 2015.
+- Tip_amount - Tip amount – this field is automatically populated for credit card tips. Cash tips are not included.
+- Tolls_amount - Total amount of all tolls paid during the trip.
+- Total_amount - The total amount charged to passengers (does not include cash tips).
+- Congestion_Surcharge - Total amount collected for NYS congestion surcharge during the trip.
+- Airport_fee - $1.25 for pickups only at LaGuardia and John F. Kennedy Airports.
+
+
+Green Taxi Dataset:
+
+Field name description
+
+- VendorID - A code indicating the LPEP provider that provided the record.
+- lpep_pickup_datetime - The date and time when the meter was engaged.
+- lpep_dropoff_datetime - The date and time when the meter was disengaged.
+- Passenger_count - The number of passengers in the vehicle (this is a driver-entered value).
+- Trip_distance - The elapsed trip distance in miles reported by the taximeter.
+- PULocationID - TLC Taxi Zone in which the taximeter was engaged.
+- DOLocationID - TLC Taxi Zone in which the taximeter was disengaged.
+- RateCodeID - The final rate code in effect at the end of the trip.
+- Store_and_fwd_flag - Indicates whether the trip record was held in vehicle memory before sending to the vendor (“store and forward”) due to no connection to the server.
+- Payment_type - A numeric code signifying how the passenger paid for the trip.
+- Fare_amount - The time-and-distance fare calculated by the meter.
+- Extra - Miscellaneous extras and surcharges, including the $0.50 and $1 rush hour and overnight charges.
+- MTA_tax - $0.50 MTA tax automatically triggered based on the metered rate in use.
+- Improvement_surcharge - $0.30 improvement surcharge assessed on hailed trips at the flag drop. The surcharge began being levied in 2015.
+- Tip_amount - Tip amount – this field is automatically populated for credit card tips. Cash tips are not included.
+- Tolls_amount - Total amount of all tolls paid during the trip.
+- Total_amount - The total amount charged to passengers (does not include cash tips).
+- Trip_type - A code indicating whether the trip was a street-hail or a dispatch. It is automatically assigned based on the metered rate in use but can be altered by the driver.
+
+
 
 ---
 ## Technologies
 - [Docker](https://www.docker.com/):- Containerization of applications -- build, share, run, and verify applications anywhere — without tedious environment configuration or management.
 - [Google Cloud Storage](https://cloud.google.com/storage) GCS - Data Lake for storage
 - [Google Cloud BigQuery](https://cloud.google.com/bigquery) - Data warehouse for analytical purposes
-- [Terraform](https://www.terraform.io/) - Infrastructure as code (Infrastructure automation to provision and manage resources in any cloud or data center.)
 - [Mage](https://docs.mage.ai/introduction/overview) -  Data and workflow orchestration 
 - [Dbt](https://www.getdbt.com/)- For analytics engineering via data transformation
-- [Looker studio](https://lookerstudio.google.com/) - Data Visualization
+- [Power BI]([https://lookerstudio.google.com/](https://www.microsoft.com/en-us/power-platform/products/power-bi)) - Data Visualization
 
 ---
-## Reproducing project
+## Project Overview
 This section will give a thorough breakdown of how to reproduce this project
 
 ### 1) Pre-requisites
