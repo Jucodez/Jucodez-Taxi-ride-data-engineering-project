@@ -1,7 +1,7 @@
-# Project Capital Bikeshare
+# New York City Taxi Ride Data Engineering Project
 ## Navigation / Quick Access
 Quickly move to section you are interested in by clicking on appropriate link:
-- [Overview](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#overview)
+- [Overview](https://github.com/Jucodez/Jucodez-Taxi-ride-data-engineering-project/tree/main#overview)
 - [Project Objective](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#project-objective)
 - [Project Architecture](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#project-architecture)
 - [Dataset](https://github.com/EdidiongEsu/capital_bikeshare/tree/main#dataset)
