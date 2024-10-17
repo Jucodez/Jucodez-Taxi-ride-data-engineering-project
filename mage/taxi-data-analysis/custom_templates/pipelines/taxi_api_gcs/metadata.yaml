@@ -1,0 +1,156 @@
+description: null
+name: null
+pipeline:
+  blocks:
+  - all_upstream_blocks_executed: true
+    callback_blocks: []
+    color: null
+    conditional_blocks: []
+    configuration: {}
+    downstream_blocks:
+    - concatenator
+    executor_config: null
+    executor_type: local_python
+    has_callback: false
+    language: python
+    metadata: {}
+    name: dl_yellow_api
+    pipelines:
+    - added_at: 1728992967.41974
+      pipeline:
+        created_at: '2024-10-15 11:48:15.155071+00:00'
+        description: null
+        name: yellow_taxi_data_2024_api_to _gcs
+        repo_path: taxi-data-analysis
+        tags: []
+        type: python
+        uuid: yellow_taxi_data_2024_api_to__gcs
+      updated_at: 1728992967.419982
+    retry_config: null
+    status: executed
+    tags: []
+    timeout: null
+    type: data_loader
+    upstream_blocks: []
+    uuid: dl_yellow_api
+  - all_upstream_blocks_executed: true
+    callback_blocks: []
+    color: null
+    conditional_blocks: []
+    configuration: {}
+    downstream_blocks:
+    - concatenator
+    executor_config: null
+    executor_type: local_python
+    has_callback: false
+    language: python
+    metadata: {}
+    name: dl_yellow_july_api
+    pipelines:
+    - added_at: 1728993643.176305
+      pipeline:
+        created_at: '2024-10-15 11:48:15.155071+00:00'
+        description: null
+        name: yellow_taxi_data_2024_api_to _gcs
+        repo_path: taxi-data-analysis
+        tags: []
+        type: python
+        uuid: yellow_taxi_data_2024_api_to__gcs
+      updated_at: 1728993643.176643
+    retry_config: null
+    status: executed
+    tags: []
+    timeout: null
+    type: data_loader
+    upstream_blocks: []
+    uuid: dl_yellow_july_api
+  - all_upstream_blocks_executed: true
+    callback_blocks: []
+    color: null
+    conditional_blocks: []
+    configuration: {}
+    downstream_blocks:
+    - de_yellow_gcs_bucket
+    executor_config: null
+    executor_type: local_python
+    has_callback: false
+    language: python
+    metadata: {}
+    name: concatenator
+    pipelines:
+    - added_at: 1728993894.115428
+      pipeline:
+        created_at: '2024-10-15 11:48:15.155071+00:00'
+        description: null
+        name: yellow_taxi_data_2024_api_to _gcs
+        repo_path: taxi-data-analysis
+        tags: []
+        type: python
+        uuid: yellow_taxi_data_2024_api_to__gcs
+      updated_at: 1728993894.11573
+    retry_config: null
+    status: executed
+    tags: []
+    timeout: null
+    type: transformer
+    upstream_blocks:
+    - dl_yellow_july_api
+    - dl_yellow_api
+    uuid: concatenator
+  - all_upstream_blocks_executed: true
+    callback_blocks: []
+    color: null
+    conditional_blocks: []
+    configuration: {}
+    downstream_blocks: []
+    executor_config: null
+    executor_type: local_python
+    has_callback: false
+    language: python
+    metadata: {}
+    name: de_yellow_gcs_bucket
+    pipelines:
+    - added_at: 1728994518.825255
+      pipeline:
+        created_at: '2024-10-15 11:48:15.155071+00:00'
+        description: null
+        name: yellow_taxi_data_2024_api_to _gcs
+        repo_path: taxi-data-analysis
+        tags: []
+        type: python
+        uuid: yellow_taxi_data_2024_api_to__gcs
+      updated_at: 1728994518.826245
+    retry_config: null
+    status: executed
+    tags: []
+    timeout: null
+    type: data_exporter
+    upstream_blocks:
+    - concatenator
+    uuid: de_yellow_gcs_bucket
+  cache_block_output_in_memory: false
+  callbacks: []
+  concurrency_config: {}
+  conditionals: []
+  created_at: '2024-10-15 11:48:15.155071+00:00'
+  data_integration: null
+  description: null
+  executor_config: {}
+  executor_count: 1
+  executor_type: null
+  extensions: {}
+  name: yellow_taxi_data_2024_api_to _gcs
+  notification_config: {}
+  remote_variables_dir: null
+  retry_config: {}
+  run_pipeline_in_one_process: false
+  settings:
+    triggers: null
+  spark_config: {}
+  tags: []
+  type: python
+  uuid: taxi_api_gcs
+  variables_dir: /home/src/mage_data/taxi-data-analysis
+  widgets: []
+tags: []
+user: {}
